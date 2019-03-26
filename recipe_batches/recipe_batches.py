@@ -13,10 +13,13 @@ def recipe_batches(recipe, ingredients):
     possibleBatches = []
     if len(recipe) == len(ingredients):
         for item, recipeValue in recipe.items():
-            for ingredient, ingredientValue in ingredients.items():
-                if item == ingredient:
-                    batchResult = math.floor(ingredientValue/recipeValue)
-                    possibleBatches.append(batchResult)
+            print(f'{ingredients[item]}')
+            if item in ingredients and ingredients[item] >= recipeValue:
+                possibleBatches.append(ingredients[item] // recipeValue)
+            # for ingredient, ingredientValue in ingredients.items():
+            #     if item == ingredient:
+            #         batchResult = math.floor(ingredientValue/recipeValue)
+            #         possibleBatches.append(batchResult)
         return min(possibleBatches)
     else:
         return 0
